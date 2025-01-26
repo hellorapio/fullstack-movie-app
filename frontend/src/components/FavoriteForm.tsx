@@ -12,8 +12,14 @@ import {
   FormMessage,
 } from "./ui/form";
 import { postFavorite } from "@/actions/actions";
+import { Dispatch, SetStateAction } from "react";
 
-export default function FavoriteForm({ imdbId }: { imdbId: string }) {
+type Props = {
+  imdbId: string;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function FavoriteForm({ imdbId, setOpen }: Props) {
   const form = useForm<Favorite>({
     defaultValues: {
       rate: "0",
@@ -29,6 +35,7 @@ export default function FavoriteForm({ imdbId }: { imdbId: string }) {
       },
       localStorage.getItem("auth") || ""
     );
+    setOpen(false);
   }
 
   return (

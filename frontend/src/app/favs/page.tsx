@@ -1,3 +1,4 @@
+import Favorites from "@/components/pages/Favorites";
 import Wrapper from "@/components/Wrapper";
 
 export default function Favs() {
@@ -6,6 +7,7 @@ export default function Favs() {
       <Wrapper>
         <h1>Favs</h1>
       </Wrapper>
+      <Favorites />
     </main>
   );
 }
