@@ -16,20 +16,19 @@ import { postFavorite } from "@/actions/actions";
 export default function FavoriteForm({ imdbId }: { imdbId: string }) {
   const form = useForm<Favorite>({
     defaultValues: {
-      rate: 0,
+      rate: "0",
       comment: "",
     },
   });
 
   async function onSubmit(values: Favorite) {
-    const data = await postFavorite(
+    await postFavorite(
       {
         ...values,
         movieId: imdbId,
       },
       localStorage.getItem("auth") || ""
     );
-    console.log(data);
   }
 
   return (

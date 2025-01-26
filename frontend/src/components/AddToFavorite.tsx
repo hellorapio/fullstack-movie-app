@@ -3,10 +3,10 @@ import {
   DialogContent,
   DialogHeader,
   DialogTrigger,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import FavoriteForm from "./FavoriteForm";
-import { DialogTitle } from "@radix-ui/react-dialog";
 
 export default function AddToFavorite({ imdbId }: { imdbId: string }) {
   return (
