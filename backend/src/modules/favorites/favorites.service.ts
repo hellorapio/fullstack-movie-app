@@ -39,4 +39,17 @@ export class FavoritesService {
 
     return fav;
   }
+
+  async updateFavorite(id: string, data: CreateFavoriteDTO, userId: string) {
+    const fav = await this.prisma.favorites.update({
+      where: { id: id, userId: userId },
+      data: data,
+    });
+
+    if (!fav) {
+      throw new NotFoundException('Favorite not found');
+    }
+
+    return fav;
+  }
 }
