@@ -5,6 +5,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { FavoritesModule } from './modules/favorites/favorites.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
+import { APP_GUARD } from '@nestjs/core';
+import LoggedGuard from './guards/logged.guard';
 
 @Module({
   imports: [
@@ -17,6 +19,11 @@ import { PrismaModule } from './prisma/prisma.module';
     FavoritesModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: LoggedGuard,
+    },
+  ],
 })
 export class AppModule {}
