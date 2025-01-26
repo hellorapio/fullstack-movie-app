@@ -11,7 +11,7 @@ export class PrismaExceptionFilter implements ExceptionFilter {
     if (exception.code === 'P2002') {
       return response.json({
         statusCode: 409,
-        message: 'the email already Exists',
+        message: 'The email already exists',
       });
     }
 
