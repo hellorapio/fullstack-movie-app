@@ -23,7 +23,7 @@ export default class LoggedGuard implements CanActivate {
     // JWT auth should be added in real world case
     // this is just a test
 
-    if (req.headers.authorization !== 'authenticated') return false;
-    return true;
+    if (req.headers.authorization.startsWith('authenticated')) return true;
+    return false;
   }
 }
