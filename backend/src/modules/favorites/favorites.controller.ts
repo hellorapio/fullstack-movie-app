@@ -10,6 +10,7 @@ import {
 import { FavoritesService } from './favorites.service';
 import CreateFavoriteDTO from './dto/create-favorite.dto';
 import { User } from 'src/decorators/User.decorator';
+import UpdateFavoriteDTO from './dto/update-favorite.dto';
 
 @Controller('favorites')
 export class FavoritesController {
@@ -42,12 +43,12 @@ export class FavoritesController {
   @Patch(':id')
   async updateFavorite(
     @Param('id') id: string,
-    @Body() createFavoriteDTO: CreateFavoriteDTO,
+    @Body() updateFavoriteDTO: UpdateFavoriteDTO,
     @User() userId: string,
   ) {
     const fav = await this.favoritesService.updateFavorite(
       id,
-      createFavoriteDTO,
+      updateFavoriteDTO,
       userId,
     );
     return { status: 'success', message: '', data: fav };

@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import CreateFavoriteDTO from './dto/create-favorite.dto';
+import UpdateFavoriteDTO from './dto/update-favorite.dto';
 
 @Injectable()
 export class FavoritesService {
@@ -40,7 +41,7 @@ export class FavoritesService {
     return fav;
   }
 
-  async updateFavorite(id: string, data: CreateFavoriteDTO, userId: string) {
+  async updateFavorite(id: string, data: UpdateFavoriteDTO, userId: string) {
     const fav = await this.prisma.favorites.update({
       where: { id: id, userId: userId },
       data: data,
