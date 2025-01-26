@@ -3,6 +3,7 @@
 import { Login, Signup, User } from "@/types";
 
 export async function login(values: Login) {
+  
   const res = await fetch("http://localhost:3000/api/auth/login", {
     method: "POST",
     headers: {
