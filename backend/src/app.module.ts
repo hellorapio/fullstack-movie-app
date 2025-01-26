@@ -12,6 +12,7 @@ import LoggedGuard from './guards/logged.guard';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      "envFilePath": ".env.local",
     }),
     PrismaModule,
     MoviesModule,
