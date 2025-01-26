@@ -1,5 +1,5 @@
 "use client";
-import { Signup } from "@/types";
+import { Signup, User } from "@/types";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Button } from "./ui/button";
@@ -12,6 +12,7 @@ import {
   FormDescription,
   FormMessage,
 } from "./ui/form";
+import { signup } from "@/actions/actions";
 
 export default function SignupForm() {
   const form = useForm<Signup>({
@@ -23,7 +24,8 @@ export default function SignupForm() {
   });
 
   async function onSubmit(values: Signup) {
-    console.log(values);
+    const data = (await signup(values)) as User;
+    localStorage.setItem("auth", "authenticated " + data.id);
   }
 
   return (
@@ -52,7 +54,7 @@ export default function SignupForm() {
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
               <FormDescription>
-                We'll never share your email haha.
+                We&apos;ll never share your email haha.
               </FormDescription>
               <FormMessage />
             </FormItem>

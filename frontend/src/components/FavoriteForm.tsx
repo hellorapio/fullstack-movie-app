@@ -1,5 +1,5 @@
 "use client";
-import { Login, User } from "@/types";
+import { Favorite } from "@/types";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Button } from "./ui/button";
@@ -9,23 +9,27 @@ import {
   FormItem,
   FormLabel,
   FormControl,
-  FormDescription,
   FormMessage,
 } from "./ui/form";
-import { login } from "@/actions/actions";
+import { postFavorite } from "@/actions/actions";
 
-export default function LoginForm() {
-  const form = useForm<Login>({
+export default function FavoriteForm({ imdbId }: { imdbId: string }) {
+  const form = useForm<Favorite>({
     defaultValues: {
-      email: "",
-      password: "",
+      rate: 0,
+      comment: "",
     },
   });
 
-  async function onSubmit(values: Login) {
-    const data = (await login(values)) as User;
+  async function onSubmit(values: Favorite) {
+    const data = await postFavorite(
+      {
+        ...values,
+        movieId: imdbId,
+      },
+      localStorage.getItem("auth") || ""
+    );
     console.log(data);
-    localStorage.setItem("auth", "authenticated " + data.id);
   }
 
   return (
@@ -33,28 +37,26 @@ export default function LoginForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="email"
+          name="rate"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Rate</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your email" {...field} />
+                <Input placeholder="Enter your Rate" {...field} />
               </FormControl>
-              <FormDescription>
-                We&apos;ll never share your email haha.
-              </FormDescription>
+
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="password"
+          name="comment"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Comment</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your password" {...field} />
+                <Input placeholder="Enter your comment" {...field} />
               </FormControl>
 
               <FormMessage />

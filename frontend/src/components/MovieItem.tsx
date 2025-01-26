@@ -16,7 +16,7 @@ const MovieItem: React.FC<Movie> = ({
       <h2 className="text-lg font-bold">{Title}</h2>
       <p className="text-sm">{Year}</p>
       <p className="text-sm">{Type}</p>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <Button asChild variant="link" className="mt-4">
           <a
             href={`https://www.imdb.com/title/${imdbID}`}

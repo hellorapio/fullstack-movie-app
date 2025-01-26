@@ -21,3 +21,9 @@ export interface User {
   name: string;
   email: string;
 }
+
+export interface Favorite {
+  rate: string;
+  comment: string;
+  movieId: string;
+}

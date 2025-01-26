@@ -1,26 +1,23 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import FavoriteForm from "./FavoriteForm";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 export default function AddToFavorite({ imdbId }: { imdbId: string }) {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button>Fav?</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure? {imdbId}</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
+          <DialogTitle>Add to favorites</DialogTitle>
+          <FavoriteForm imdbId={imdbId} />
         </DialogHeader>
       </DialogContent>
     </Dialog>
