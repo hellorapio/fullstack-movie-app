@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: ./backend/Dockerfile
+    command: python manage.py runserver
+
+  frontend:
+    build: ./frontend/Dockerfile
+    command: npm start
+    
+  db:
+    image: postgres:16.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
