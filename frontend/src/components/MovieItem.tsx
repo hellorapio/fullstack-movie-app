@@ -1,5 +1,6 @@
 import React from "react";
 import { Movie } from "../types";
+import { Button } from "./Button";
 
 const MovieItem: React.FC<Movie> = ({
   Title,
@@ -14,14 +15,16 @@ const MovieItem: React.FC<Movie> = ({
       <h2 className="text-lg font-bold">{Title}</h2>
       <p className="text-sm">{Year}</p>
       <p className="text-sm">{Type}</p>
-      <a
-        href={`https://www.imdb.com/title/${imdbID}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-500 underline mt-2 block"
-      >
-        View on IMDb
-      </a>
+      <Button asChild variant="default" className="mt-4">
+        <a
+          href={`https://www.imdb.com/title/${imdbID}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline mt-2 block"
+        >
+          View on IMDb
+        </a>
+      </Button>
     </div>
   );
 };
