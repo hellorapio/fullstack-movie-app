@@ -12,6 +12,8 @@ services:
   backend:
     build: /backend
     command: npm run start:prod
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@db:5432/moviesapp?schema=public
     depends_on:
       - db
     ports:

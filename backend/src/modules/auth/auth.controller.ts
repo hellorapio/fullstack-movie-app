@@ -18,7 +18,7 @@ export class AuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   async login(@Body() body: LoginDTO) {
-    await this.authService.login(body);
-    return { status: 'success', message: 'User logged in', data: {} };
+    const user = await this.authService.login(body);
+    return { status: 'success', message: 'User logged in', data: user };
   }
 }

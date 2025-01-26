@@ -39,7 +39,7 @@ export default function LoginForm() {
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
               <FormDescription>
-                We'll never share your email haha.
+                We&apos;ll never share your email haha.
               </FormDescription>
               <FormMessage />
             </FormItem>

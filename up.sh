@@ -3,9 +3,7 @@ docker-compose up db -d
 sleep 6
 
 cd backend
-
 npm run migrate
-npm run generate
 
 cd ..
 docker-compose up backend --build -d

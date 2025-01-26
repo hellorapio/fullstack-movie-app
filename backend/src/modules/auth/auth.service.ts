@@ -17,10 +17,11 @@ export class AuthService {
     const user = await this.prisma.user.findFirst({
       where: { email: data.email },
     });
-
+    if (!user)
+      throw new UnauthorizedException('the email or password is incorrect');
     if (user.password !== data.password)
       throw new UnauthorizedException('the password is incorrect');
-
+    delete user.password;
     return user;
   }
 }

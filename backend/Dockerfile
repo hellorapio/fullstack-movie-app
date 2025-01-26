@@ -8,10 +8,7 @@ RUN npm install --legacy-peer-deps
 
 COPY . .
 
-RUN npm run migrate
 RUN npm run generate
-
-RUN npm run build
 
 RUN npm run build
 
