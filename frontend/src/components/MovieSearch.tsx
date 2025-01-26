@@ -1,7 +1,8 @@
+"use client";
 import { useEffect, useState } from "react";
 import { Movie } from "../types";
 import MovieItem from "../components/MovieItem";
-import { Input } from "./Input";
+import { Input } from "@/components/ui/input";
 
 export default function MovieSearch() {
   const [query, setQuery] = useState("");

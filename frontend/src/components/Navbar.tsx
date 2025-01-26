@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Wrapper from "./Wrapper";
 
 export default function NavBar() {
@@ -9,7 +9,7 @@ export default function NavBar() {
           <ul className="flex gap-6">
             <li>
               <Link
-                to="/"
+                href="/"
                 className="hover:opacity-60 transition-all duration-300"
               >
                 Search Movies
@@ -17,7 +17,7 @@ export default function NavBar() {
             </li>
             <li>
               <Link
-                to="/favs"
+                href="/favs"
                 className="hover:opacity-60 transition-all duration-300"
               >
                 Favorites

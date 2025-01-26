@@ -1,12 +1,12 @@
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
-  DialogTitle,
   DialogDescription,
-} from "@radix-ui/react-dialog";
-import { DialogHeader } from "./Dialog";
-import { Button } from "./Button";
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export default function AddToFavorite({ imdbId }: { imdbId: string }) {
   return (

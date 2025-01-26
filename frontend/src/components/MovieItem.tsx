@@ -1,7 +1,7 @@
 import React from "react";
-import { Movie } from "../types";
-import { Button } from "./Button";
-import AddToFavorite from "./AddToFavorite";
+import { Movie } from "@/types";
+import AddToFavorite from "@/components/AddToFavorite";
+import { Button } from "./ui/button";
 
 const MovieItem: React.FC<Movie> = ({
   Title,
