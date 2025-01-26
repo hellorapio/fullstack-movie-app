@@ -6,9 +6,10 @@ import { PrismaExceptionFilter } from './filters/PrismaException.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors({
+    origin: '*',
+  });
   app.setGlobalPrefix('/api/');
-
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -25,7 +26,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('orders')
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('docs', app, document);

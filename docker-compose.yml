@@ -1,11 +1,4 @@
 services:
-  backend:
-    build: /backend
-    command: npm run start:prod
-    depends_on:
-      - db
-    ports:
-      - "3000:3000"
   db:
     image: postgres:16.4
     volumes:
@@ -16,6 +9,13 @@ services:
       POSTGRES_PASSWORD: mypassword
     ports:
       - "5432:5432"
+  backend:
+    build: /backend
+    command: npm run start:prod
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
 
 volumes:
   postgres_data:
